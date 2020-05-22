@@ -15,6 +15,7 @@
 </head>
 <body>
     <div id="map"></div>
+    <script src="node_modules/leaflet-hash/leaflet-hash.js"></script>
     <script type="text/javascript">
         var minZoom = 0
         var maxZoom = 5
@@ -23,7 +24,11 @@
             crs: L.CRS.Simple,
             minZoom: minZoom,
             maxZoom: maxZoom
-        }).setView([1500,1300],2)
+        })
+        var hash = new L.Hash(map);
+        if(hash.lastHash == null) {
+            map.setView([1500,1300],2);
+        }
         // }).setView([1860,1582],1)
         // }).setView([3591,-3835],1)
         L.tileLayer('./img/{x},{y}.jpg', {
